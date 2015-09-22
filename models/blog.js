@@ -1,44 +1,77 @@
-var Blog =  {
-  blogs: [
-    {
-      id: 1,
-      title: 'First Blog',
-      content: 'My first experience with express and react with redux. Full isomorphic.'
-  },
-  {
-    id: 2,
-    title: 'Second Blog',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    id: 3,
-    title: 'Third Blog',
-    content: 'Suspendisse in leo porta, ornare justo eget, hendrerit nunc. Quisque pulvinar odio leo, vitae tempor ex vestibulum et. Vivamus molestie vulputate nisi, quis interdum enim scelerisque at. Etiam ex nisi, accumsan eget pulvinar vitae, ornare non ante. Proin eu semper mi. Sed ante diam, sollicitudin id dolor vel, egestas facilisis sem.'
-  }],
+import redis from '../db/redis';
+import * as db from '../db/blogs';
 
+let {DB_NAME, BLOG_IDS, NEXT_BLOG_ID} = db;
+
+((redis) => {
+  let $r = redis.createClient();
+  $r.getAsync(NEXT_BLOG_ID)
+  .then(res => {
+      if(isNaN(+res) || +res == 0) {
+        return $r.setAsync([NEXT_BLOG_ID, 1])
+      } else {
+        return $r
+      }
+
+  })
+  .done(() => $r.quit())
+})(redis)
+
+
+var Blog =  {
   create: function(blog, cb) {
+    let $r = redis.createClient();
     if(!(blog || blog.title)) {
-      cb(Error("invalid data"))
+      cb(Error("INVALID_DATA"))
     } else {
-      blog.id = this.blogs.length + 1;
-      this.blogs.push(blog);
-      cb(null, blog);
+      $r.getAsync(NEXT_BLOG_ID)
+        .then( id => {
+          blog.id = id;
+          return $r.hmsetAsync([`id:${id}`, 'id', id, 'title', blog.title, 'content', blog.content])
+        })
+        .then( status => {
+          if(status === 'OK') {
+            console.log("lbog", blog.id)
+            $r.setAsync([NEXT_BLOG_ID, (+blog.id) + 1])
+            $r.lpushAsync([BLOG_IDS, (+blog.id)])
+            cb(null,  blog);
+          } else {
+            cb(Error("SERVER_ERROR"))
+          }
+        })
+        .catch(() => cb(Error("SERVER_ERROR")))
+        .done(() => $r.quit())
     }
   },
 
-  get: function(predicate, cb) {
-    if(!(predicate || Object.getOwnPropertyNames(predicate).length)) {
-      cb(Error("invalid data"))
+  getById: function(id, cb) {
+    let $r = redis.createClient();
+    if(!id) {
+      cb(Error("INVALID_DATA"))
     } else {
-      var result = this.blogs.filter(function(blog) {
-        return Object.keys(predicate).reduce(function(res, k) { return res && predicate[k] == blog[k] },true)
-      });
-      cb(null, result);
+      $r.hgetallAsync(`id:${id}`)
+        .then( res => {
+          if(!res) cb(Error("RECORD_NOT"))
+          else cb(null, res)
+        })
+        .catch(() => cb(Error("SERVER_ERROR")))
+        .done(() => $r.quit())
     }
   },
 
   all: function(noob, cb) {
-    cb(null, this.blogs);
+    let blogs = [];
+    let $r = redis.createClient();
+    $r.lrangeAsync([BLOG_IDS, 0, -1])
+      .then( ids => {
+        console.log(ids);
+        return ids.map( id => $r.hgetallAsync(`id:${id}`) )
+      })
+      .then(res => {
+        Promise.all(res.map( r => r.then(b => blogs.push(b)) )).then( p => cb(null, blogs))
+      })
+      .catch(() => cb("SERVER_ERROR"))
+      .done(() => $r.quit())
   }
 }
 

@@ -9,7 +9,7 @@ export default React.createClass({
           <Link to="/" className="main-header">beeellog</Link>
           <div className="nav-tabs">
             <Link to="/about">About</Link>
-            <Link to="/blog">Blog</Link>
+            <Link to="/blogs">Blogs</Link>
           </div>
         </nav>
         <section className="container"> {this.props.children} </section>

@@ -1,3 +1,12 @@
+Promise.prototype.done = function(onFulfilled, onRejected) {
+  this
+  .then(onFulfilled, onRejected)
+  .catch(function(e) {
+    setTimeout(function() { throw e; });
+  })
+  ;
+}
+
 var whiteBird = {
   __suffix: 'Async'
 };
