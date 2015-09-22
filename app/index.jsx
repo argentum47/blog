@@ -1,5 +1,4 @@
 import React from 'react';
-import { Router, Route, Link } from 'react-router';
-import App from './componenets/App';
+import Root from './components/Root';
 
-React.render(<App/>, document.getElementById('app'));
+React.render(<Root />, document.getElementById('app'));

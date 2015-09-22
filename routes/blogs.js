@@ -6,7 +6,7 @@ var Blog = wB.promisifyAll(require('../models/blog'));
 router.get('/', function(req, res, next) {
   Blog.allAsync()
     .then(function(blogs) {
-      res.render('blogs', { title: 'Blogs', data: blogs })
+      res.send({data: blogs })
     })
     .catch(function(err) {
       next(err);
@@ -21,7 +21,7 @@ router.post('/create', function(req, res, next) {
 
   Blog.createAsync(blog)
     .then(function(blog) {
-      res.send(blog)
+      res.send({data: blog})
     })
     .catch(function(err) {
       next(err);
@@ -31,7 +31,7 @@ router.post('/create', function(req, res, next) {
 router.get('/:id', function (req, res, next) {
   Blog.getAsync({id: req.params.id})
     .then(function(blog) {
-      res.send(blog);
+      res.send({data: blog});
     })
     .catch(function(err) {
       next(err);
