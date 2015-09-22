@@ -22,6 +22,10 @@ gulp.task('clean', function() {
   del(['public/javascripts/**/*.js']).then(function() { console.log("cleaned"); })
 })
 
-gulp.task('watch', function() {
-  gulp.watch('app/**/*.jsx', ['clean', 'default'])
+gulp.task('watch', ['default'], function() {
+  var watcher = gulp.watch(['app/**/*.jsx', 'app/**/*.js'], ['clean', 'default']);
+  watcher.on('change', function() {
+    var date = new Date;;
+    console.log("changed at ", date.getHours(), ":", date.getMinutes(), ":", date.getSeconds())
+  })
 })

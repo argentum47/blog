@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default React.createClass({
-  render: function() {
-    return(
-      <section className="blogs">
-        <nav className="left"></nav>
-        <section className="content">
-          This is so not me.
-        </section>
-      </section>
+export default class Blog extends Component {
+  render() {
+    let {blog} = this.props;
+    return (
+      <article>
+        <h1>{blog.title}</h1>
+        <p>{blog.content}</p>
+      </article>
     )
   }
-})
+}

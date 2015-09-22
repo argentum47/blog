@@ -1,6 +1,5 @@
 class BlogApi {
   status(resp) {
-    console.log(resp)
     if(resp.status >= 200 && resp.status < 300)
       return Promise.resolve(resp)
     else
@@ -12,19 +11,19 @@ class BlogApi {
   }
 
   all() {
-    fetch('/api/blogs')
-    .then(status)
-    .then(json)
+    return fetch('/api/blogs')
+    .then(this.status)
+    .then(this.json)
   }
 
   find(id) {
-    fetch(`api/blogs/${id}`)
+    return fetch(`api/blogs/${id}`)
       .then(status)
       .then(json)
   }
 
   create(title, content) {
-    fetch('/api/blogs/create', {
+    return fetch('/api/blogs/create', {
       method: 'POST',
       body: `title=${title}&content=${content}`
     })
@@ -33,4 +32,4 @@ class BlogApi {
   }
 }
 
-export default BlogApi;
+export default new BlogApi();
