@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {getAllBlogs} from'../actions/blogs';
 import Blog from './Blog';
@@ -14,9 +15,12 @@ class Blogs extends Component {
       blogsHtml = this.props.blogs.map( blog => <Blog blog={blog} key={blog.id}/> )
     }
     return (
-      <section className="blogs">
-        { blogsHtml }
-      </section>
+      <div className="blog-container">
+        <section className="blogs">
+          { blogsHtml }
+        </section>
+        <Link to="create">new blog</Link>
+      </div>
     );
   }
 }

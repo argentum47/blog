@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import About from './About';
 import Blogs from './Blogs';
+import CreateBlog from './CreateBlog';
 import App from './App';
 
 import store from '../reduxStore';
@@ -16,7 +17,9 @@ class Root extends Component {
         <Router>
           <Route path="/" component={App}>
             <Route path="about" component={About}/>
-            <Route path="blogs" component={Blogs} />
+            <Route path="blogs" component={Blogs}>
+              <Route path="create" component={CreateBlog}/>
+            </Route>
           </Route>
         </Router>
       }
