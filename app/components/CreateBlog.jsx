@@ -3,10 +3,16 @@ import {connect} from 'react-redux';
 import {addBlog} from '../actions/blogs';
 
 class CreateBlog extends Component{
-  submitBlog() {
+  constructor(props, state) {
+    super(props, state)
+    this.submitBlog = this.submitBlog.bind(this)
+  }
+  
+  submitBlog(e) {
+    e.preventDefault();
     let title = React.findDOMNode(this.refs.title).value;
     let content = React.findDOMNode(this.refs.content).value;
-    this.props.dispatch(addBlog({ title: title, content: content }))
+    this.props.dispatch(addBlog(title, content))
   }
 
   render() {

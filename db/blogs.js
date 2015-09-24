@@ -1,3 +1,5 @@
-export const DB_NAME = 'BLOGS';
-export const NEXT_BLOG_ID = "NEXT_BLOG_ID"
-export const BLOG_IDS = 'BLOG_IDS'
+module.exports = {
+    DB_NAME: 'BLOGS',
+    NEXT_BLOG_ID: 'NEXT_BLOG_ID',
+    BLOG_ID: 'BLOG_IDS'
+}

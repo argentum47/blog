@@ -19,7 +19,7 @@ class Blogs extends Component {
         <section className="blogs">
           { blogsHtml }
         </section>
-        <Link to="create">new blog</Link>
+        <Link to="/create">new blog</Link>
       </div>
     );
   }

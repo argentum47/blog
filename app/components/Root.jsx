@@ -17,9 +17,8 @@ class Root extends Component {
         <Router>
           <Route path="/" component={App}>
             <Route path="about" component={About}/>
-            <Route path="blogs" component={Blogs}>
-              <Route path="create" component={CreateBlog}/>
-            </Route>
+            <Route path="blogs" component={Blogs}/>
+            <Route path="create" component={CreateBlog}/>
           </Route>
         </Router>
       }

@@ -1,3 +1,5 @@
+import fetch from '../ajax.js';
+
 class BlogApi {
   status(resp) {
     if(resp.status >= 200 && resp.status < 300)
@@ -7,7 +9,7 @@ class BlogApi {
   }
 
   json(resp) {
-    return resp.json()
+    return JSON.parse(resp.responseText)
   }
 
   all() {
@@ -18,8 +20,8 @@ class BlogApi {
 
   find(id) {
     return fetch(`api/blogs/${id}`)
-      .then(status)
-      .then(json)
+      .then(this.status)
+      .then(this.json)
   }
 
   create(title, content) {
@@ -27,8 +29,8 @@ class BlogApi {
       method: 'POST',
       body: `title=${title}&content=${content}`
     })
-    .then(status)
-    .then(json)
+    .then(this.status)
+    .then(this.json)
   }
 }
 

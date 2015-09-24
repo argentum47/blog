@@ -1,7 +1,10 @@
-import redis from '../db/redis';
-import * as db from '../db/blogs';
+'use strict';
+var redis = require('../db/redis');
+var db = require('../db/blogs');
 
-let {DB_NAME, BLOG_IDS, NEXT_BLOG_ID} = db;
+let DB_NAME = db.DB_NAME;
+let BLOG_IDS = db.BLOG_IDS;
+let NEXT_BLOG_ID = db.NEXT_BLOG_ID;
 
 ((redis) => {
   let $r = redis.createClient();
@@ -26,6 +29,7 @@ var Blog =  {
     } else {
       $r.getAsync(NEXT_BLOG_ID)
         .then( id => {
+          console.log("blog", blog)
           blog.id = id;
           return $r.hmsetAsync([`id:${id}`, 'id', id, 'title', blog.title, 'content', blog.content])
         })
