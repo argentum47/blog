@@ -1,3 +1,4 @@
+/** Generic **/
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +7,8 @@
 
 body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
+  background-color: #333;
 }
 
 a {
@@ -46,25 +49,51 @@ h1, h2, h3, h4,h5, h6 {
   font-color: #444;
 }
 
-.header {
-  padding-top: 25px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  background-color: #eee;
+/** Generic End **/
+
+/** Main **/
+
+#app {
+  padding-top: 50px;
+  width: 90vw;
+  margin: 0 auto;
 }
 
-.header a {
-  color: #444;
+/** Main **/
+
+.sidebar {
+  width: 10vw;
+}
+
+.brand {
+  color: #ccc;
+  font-size: 8em;
+  font-family: cursive;
+  text-transform: lowercase;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .nav-tabs {
-  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 10px;
 }
 
-.main-header {
-  font-size: 30px;
+.nav-tabs a {
+  flex-wrap: wrap;
+  padding-top: 10px;
+  font-family: monospace;
+  font-size: 1.2rem;
+  display: block;
+  text-align: center;
+  width: 80px;
+}
+
+.seperator {
+  border-bottom: 2px solid #ddd;
+  width: 80px;
 }
 
 .container {

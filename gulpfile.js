@@ -7,7 +7,7 @@ var source = require('vinyl-source-stream');
 gulp.task('build', function () {
   browserify({
     entries: 'app/index.jsx',
-    extensions: ['.jsx'] //, debug: true 
+    extensions: ['.jsx'] //, debug: true
   })
   .transform(babelify)
   .bundle()
@@ -18,7 +18,7 @@ gulp.task('build', function () {
 gulp.task('default', ['build']);
 
 gulp.task('clean', function() {
-  del(['public/javascripts/**/*.js']).then(function() { console.log("cleaned"); })
+  del(['public/javascripts/bundle.js']).then(function() { console.log("cleaned"); })
 })
 
 gulp.task('watch', ['default'], function() {

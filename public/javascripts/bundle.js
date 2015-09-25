@@ -208,11 +208,11 @@ exports['default'] = _react2['default'].createClass({
       { className: 'everything' },
       _react2['default'].createElement(
         'nav',
-        { className: 'header' },
+        { className: 'sidebar' },
         _react2['default'].createElement(
           _reactRouter.Link,
-          { to: '/', className: 'main-header' },
-          'beeellog'
+          { to: '/', className: 'brand' },
+          'Ag'
         ),
         _react2['default'].createElement(
           'div',
@@ -222,11 +222,13 @@ exports['default'] = _react2['default'].createClass({
             { to: '/about' },
             'About'
           ),
+          _react2['default'].createElement('span', { className: 'seperator' }),
           _react2['default'].createElement(
             _reactRouter.Link,
             { to: '/blogs' },
             'Blogs'
-          )
+          ),
+          _react2['default'].createElement('span', { className: 'seperator' })
         )
       ),
       _react2['default'].createElement(
