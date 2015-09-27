@@ -1,3 +1,5 @@
+'use strict';
+
 var redis = require('../db/redis');
 var bcrypt = require('bcrypt-nodejs');
 var wB = require('../whitebird');

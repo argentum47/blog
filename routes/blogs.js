@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var wB = require('../whitebird');
-var Blog = ('../models/blog');
+var Blog = require('../models/blog');
 
 router.get('/', function(req, res, next) {
   Blog.allAsync()
