@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var wB = require('../whitebird');
-var Blog = wB.promisifyAll(require('../models/blog'));
+var Blog = ('../models/blog');
 
 router.get('/', function(req, res, next) {
   Blog.allAsync()
@@ -14,18 +14,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {
-  var blog = {
-    title: req.body.title,
-    content: req.body.content
-  };
+  if(req.isAuthenticated()) {
+    var blog = {
+      title: req.body.title,
+      content: req.body.content
+    };
 
-  Blog.createAsync(blog)
-    .then(function(blog) {
-      res.send({data: blog})
-    })
-    .catch(function(err) {
-      next(err);
-    })
+    Blog.createAsync(blog)
+      .then(function(blog) {
+        res.send({data: blog});
+      })
+      .catch(err => next(err));
+  } else {
+    next(Error("Unauthorized"))
+  }
 });
 
 router.get('/:id', function (req, res, next) {

@@ -5,13 +5,12 @@ export default React.createClass({
   render: function() {
     return(
       <div className="everything">
-        <nav className="sidebar">
-          <Link to="/" className="brand">Ag</Link>
+        <nav className="sidebar clearfix">
+          <Link to="/" className="brand">AG</Link>
           <div className="nav-tabs">
             <Link to="/about">About</Link>
-            <span className="seperator"></span>
             <Link to="/blogs">Blogs</Link>
-            <span className="seperator"></span>
+            <Link to="/work">Projects</Link>
           </div>
         </nav>
         <section className="container"> {this.props.children} </section>

@@ -1,6 +1,7 @@
 'use strict';
 var redis = require('../db/redis');
 var db = require('../db/blogs');
+var wB = require('../whitebird');
 
 let DB_NAME = db.DB_NAME;
 let BLOG_IDS = db.BLOG_IDS;
@@ -55,7 +56,7 @@ var Blog =  {
     } else {
       $r.hgetallAsync(`id:${id}`)
         .then( res => {
-          if(!res) cb(Error("RECORD_NOT"))
+          if(!res) cb(Error("RECORD_NOT_FOUND"))
           else cb(null, res)
         })
         .catch(() => cb(Error("SERVER_ERROR")))
@@ -80,4 +81,4 @@ var Blog =  {
 }
 
 
-module.exports = Blog
+module.exports = wB.promisifyAll(Blog);
