@@ -15,9 +15,11 @@ class Projects extends Component {
   }
 
   render() {
+    let repos = "loading..."
+    repos = this.state.repos.map((repo, i) => <OneBox data={repo} key={i}/>)
     return(
       <div className='work'>
-        {this.state.repos.map((repo, i) => <OneBox data={repo} key={i}/>)}
+        {repos}
       </div>
     )
   }

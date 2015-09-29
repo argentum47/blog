@@ -6,9 +6,9 @@
 }
 
 body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px monospace;
   height: 100vh;
-  background-color: #F1F3E6;
+  background-color: #fff;
 }
 
 a {
@@ -50,6 +50,37 @@ a {
 
 /** Generic End **/
 
+/** Colors **/
+.dark-primary-color {
+  background: #512DA8;
+}
+
+.default-primary-color { background: #673AB7; }
+
+.light-primary-color{
+  background: #D1C4E9;
+}
+
+.text-primary-color {
+  color: #FFFFFF;
+}
+
+.accent-color {
+  background: #FF5252;
+}
+
+.primary-text-color {
+  color: #212121;
+}
+
+.secondary-text-color {
+  color: #727272;
+}
+
+.divider-color {
+  border-color: #B6B6B6;
+}
+
 /** Main **/
 
 #app {
@@ -62,36 +93,32 @@ a {
   height: 100%;
 }
 
-.sidebar {
-  background-color: #000;
-  padding: 0 20px;
-  height: 55px;
+.navbar{
+  background-color: #512DA8;
+  padding: 30px 10px 5px;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .brand {
   color: #ccc;
-  font-size: 2.8em;
+  font-size: 6.8em;
+  margin-top: -0.4em;
   font-family: cursive;
   text-transform: lowercase;
-  display: inline-block;
-  float: left;
+  text-shadow: 0 10px 12px rgba(0,0,0,0.12), 0 12px 15px rgba(0,0,0,0.24);
 }
 
 .nav-tabs {
-  display: flex;
-  float: right;
   height: 100%;
-  align-items: center;
-  justify-content: space-around;
-  vertical-align: bottom;
+  padding-top: 1.2em;
 }
 
 .nav-tabs a {
-  flex-wrap: wrap;
-  font-family: monospace;
   font-size: 1.2rem;
-  display: block;
   text-align: center;
+  padding: 1.4em 0 0;
 }
 
 .nav-tabs a::after {
@@ -100,12 +127,64 @@ a {
   padding: 0 10px;
 }
 
-.container {
-  padding: 10px 20px 0;
-  margin-top: 40px;
-  color: #000;
+.nav-tabs li:last-child a::after {
+  content: "";
 }
 
+.container {
+  padding: 10px 20px 0;
+  margin-top: 250px;
+  color: #666;
+}
+
+.container-flex {
+  display: flex;
+  justify-content:space-between;
+}
+
+.summary, .skillset, .social {
+  width: 250px;
+}
+
+.container-flex h2 {
+  font-weight: normal;
+  color: #fff;
+  background-color: #3949AB;
+  border: 1px solid rgba(255, 255,255, 0.2);
+  padding: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+}
+
+.container-flex h3 {
+  font-weight: normal;
+  color: #fff;
+  background-color: #FF5252;
+  border: 1px solid rgba(255, 255,255, 0.2);
+  padding: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+}
+
+.crumb {
+  color: #ccc;
+  margin: 5px 10px 5px 0;
+  width: 70px;
+  display: inline-block;
+}
+
+.crumb::after {
+  content: "//";
+}
+
+.userImage {
+  display: block;
+}
+
+.skill {
+  display: block;
+  margin-bottom: 10px;
+}
 
 /** one box **/
 .onebox {

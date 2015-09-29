@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 
 import About from './About';
+import Home  from './Home';
 import Blogs from './Blogs';
 import Projects from './Projects';
 import App from './App';
@@ -15,9 +16,10 @@ class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-      {() =>
-        <Router>
-          <Route path="/" component={App}>
+        {() =>
+          <Router>
+         <Route component={App}>
+            <Route path="/" component={Home}/>
             <Route path="about" component={About}/>
             <Route path="blogs" component={Blogs}/>
             <Route path="work" component={Projects}/>

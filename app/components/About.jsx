@@ -3,9 +3,9 @@ import React from 'react';
 export default React.createClass({
   render: function() {
     return(
-      <div>
-        <h2 className="heading">ABOUT</h2>
+      <div className="container-flex">
         <section className="summary">
+          <h2 className="heading">ABOUT</h2>
           <div className="bread"><span className="crumb">Who</span>Amitava Ghosh</div>
           <div className="bread"><span className="crumb">Where</span>India</div>
           <div className="bread"><span className="crumb">What</span>Web Developer</div>
