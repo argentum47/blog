@@ -6,18 +6,28 @@ export default React.createClass({
       <div className="container-flex">
         <section className="summary">
           <h2 className="heading">ABOUT</h2>
-          <div className="bread"><span className="crumb">Who</span>Amitava Ghosh</div>
-          <div className="bread"><span className="crumb">Where</span>India</div>
-          <div className="bread"><span className="crumb">What</span>Web Developer</div>
-          <div className="bread"><span className="crumb">When</span>2010-Present</div>
-          <div className="bread"><span className="crumb">Why</span>PASSION</div>
+          <div className="bread">
+            <span className="crumb">Who</span>Amitava Ghosh
+          </div>
+          <div className="bread">
+            <span className="crumb">Where</span>India
+          </div>
+          <div className="bread">
+            <span className="crumb">What</span>Web Developer
+          </div>
+          <div className="bread">
+            <span className="crumb">When</span>2010-Present
+          </div>
+          <div className="bread">
+            <span className="crumb">Why</span>PASSION
+          </div>
         </section>
         <section className="skillset">
           <h2>Skills</h2>
-          <span className="skill">Javascript</span>
-          <span className="skill">PHP</span>
-          <span className="skill">Rails on Ruby</span>
-          <span className="skill">HTML & CSS</span>
+          <pre className="skill">Javascript</pre>
+          <pre className="skill">PHP</pre>
+          <pre className="skill">Rails on Ruby</pre>
+          <pre className="skill">HTML & CSS</pre>
         </section>
         <section className="social">
           <h3>Get me on</h3>

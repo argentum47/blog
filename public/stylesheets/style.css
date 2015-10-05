@@ -46,6 +46,7 @@ a {
 
 .list-inline li {
   display: inline-block;
+  padding: 0 5px;
 }
 
 /** Generic End **/
@@ -55,7 +56,9 @@ a {
   background: #512DA8;
 }
 
-.default-primary-color { background: #673AB7; }
+.default-primary-color {
+  background: #673AB7;
+}
 
 .light-primary-color{
   background: #D1C4E9;
@@ -87,124 +90,84 @@ a {
   height: inherit;
 }
 
-/** Main **/
-
 .everything {
   height: 100%;
 }
 
-.navbar{
-  background-color: #512DA8;
-  padding: 30px 10px 5px;
+.navbar {
   position: fixed;
+  bottom: 0;
   width: 100%;
-  top: 0;
+  padding: 10px 0;
+  background-color: #eee;
 }
 
-.brand {
-  color: #ccc;
-  font-size: 6.8em;
-  margin-top: -0.4em;
-  font-family: cursive;
-  text-transform: lowercase;
-  text-shadow: 0 10px 12px rgba(0,0,0,0.12), 0 12px 15px rgba(0,0,0,0.24);
+.nav-tabs a{
+  position: relative;
+  padding: 6px 0 8px;
+  margin: 0 8px;
+  display: inline-block;
 }
 
-.nav-tabs {
-  height: 100%;
-  padding-top: 1.2em;
+.nav-tabs a:before {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 2px solid #0b0;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.4s ease;
 }
 
-.nav-tabs a {
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 1.4em 0 0;
-}
-
-.nav-tabs a::after {
-  content: "/";
-  color: #ccc;
-  padding: 0 10px;
-}
-
-.nav-tabs li:last-child a::after {
-  content: "";
+.nav-tabs a:hover:before {
+  transform: scaleX(1);
 }
 
 .container {
-  padding: 10px 20px 0;
-  margin-top: 250px;
+  padding: 10%;
   color: #666;
+  font-size: 12px;
 }
 
 .container-flex {
   display: flex;
   justify-content:space-between;
+  flex-wrap: wrap;
 }
 
-.summary, .skillset, .social {
-  width: 250px;
+.about-me p {
+  margin-top: 4.8em;
+  font-size: 1.7em;
 }
 
-.container-flex h2 {
-  font-weight: normal;
-  color: #fff;
-  background-color: #3949AB;
-  border: 1px solid rgba(255, 255,255, 0.2);
-  padding: 6px;
+.about-me span {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.about-me span:first-child {
+  margin-top: 0;
+}
+
+.summary, .skillset {
+  border-bottom: 20px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.summary h2, .skillset h2, .social h3 {
+  border-bottom: 2px solid;
   margin-bottom: 10px;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+  text-align: center;
 }
 
-.container-flex h3 {
-  font-weight: normal;
-  color: #fff;
-  background-color: #FF5252;
-  border: 1px solid rgba(255, 255,255, 0.2);
-  padding: 6px;
-  margin-bottom: 10px;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+.bread, .skill {
+  padding: 5px 0;
 }
 
 .crumb {
-  color: #ccc;
-  margin: 5px 10px 5px 0;
-  width: 70px;
   display: inline-block;
-}
-
-.crumb::after {
-  content: "//";
-}
-
-.userImage {
-  display: block;
-}
-
-.skill {
-  display: block;
-  margin-bottom: 10px;
-}
-
-/** one box **/
-.onebox {
-  display: inline-block;
-  background-color: #fff;
-  border: 1px solid #999;
-  box-shadow: 0 0 10px #222;
-  margin: 10px;
-  padding: 20px;
-  width: 400px;
-}
-
-.box-content {
-  display: flex;
-  justify-content: space-around;
-}
-
-.repo-star, .repo-watches {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 5px;
+  width: 50px;
+  padding-right: 10px;
 }

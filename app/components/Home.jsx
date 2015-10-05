@@ -4,11 +4,15 @@ import UserImage from './UserImage';
 export default React.createClass({
   render: function() {
     return (
-      <p>
+      <article className="about-me">
         <UserImage width="150" height="150" />
-        I am a web developer, innovator, derivative thinker.<br/>
-        I like to simplify complex thing.
-      </p>
+        <p>
+          a web developer,<br/>
+          innovator,<br/>
+          derivative thinker,<br/>
+          likes to simplify complex thing.
+        </p>
+      </article>
     )
   }
 });

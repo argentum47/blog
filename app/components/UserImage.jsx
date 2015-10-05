@@ -32,6 +32,6 @@ export default React.createClass({
   render: function() {
     if(!this.state.imageUrl)
       return <span>loading..</span>;
-    return <img className="userImage" width="200" height="200" src={this.state.imageUrl} />;
+    return <img className="user-image" width="200" height="200" src={this.state.imageUrl} />;
   }
 });

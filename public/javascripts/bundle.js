@@ -210,22 +210,22 @@ exports["default"] = _react2["default"].createClass({
           "Skills"
         ),
         _react2["default"].createElement(
-          "span",
+          "pre",
           { className: "skill" },
           "Javascript"
         ),
         _react2["default"].createElement(
-          "span",
+          "pre",
           { className: "skill" },
           "PHP"
         ),
         _react2["default"].createElement(
-          "span",
+          "pre",
           { className: "skill" },
           "Rails on Ruby"
         ),
         _react2["default"].createElement(
-          "span",
+          "pre",
           { className: "skill" },
           "HTML & CSS"
         )
@@ -292,15 +292,6 @@ exports['default'] = _react2['default'].createClass({
       _react2['default'].createElement(
         'nav',
         { ref: 'navbar', className: 'navbar' },
-        _react2['default'].createElement(
-          'p',
-          null,
-          _react2['default'].createElement(
-            _reactRouter.Link,
-            { to: '/', className: 'brand' },
-            'AG'
-          )
-        ),
         _react2['default'].createElement(
           'ul',
           { className: 'nav-tabs list-inline' },
@@ -509,12 +500,20 @@ exports['default'] = _react2['default'].createClass({
 
   render: function render() {
     return _react2['default'].createElement(
-      'p',
-      null,
+      'article',
+      { className: 'about-me' },
       _react2['default'].createElement(_UserImage2['default'], { width: '150', height: '150' }),
-      'I am a web developer, innovator, derivative thinker.',
-      _react2['default'].createElement('br', null),
-      'I like to simplify complex thing.'
+      _react2['default'].createElement(
+        'p',
+        null,
+        'a web developer,',
+        _react2['default'].createElement('br', null),
+        'innovator,',
+        _react2['default'].createElement('br', null),
+        'derivative thinker,',
+        _react2['default'].createElement('br', null),
+        'likes to simplify complex thing.'
+      )
     );
   }
 });
@@ -828,7 +827,7 @@ exports['default'] = _react2['default'].createClass({
       null,
       'loading..'
     );
-    return _react2['default'].createElement('img', { className: 'userImage', width: '200', height: '200', src: this.state.imageUrl });
+    return _react2['default'].createElement('img', { className: 'user-image', width: '200', height: '200', src: this.state.imageUrl });
   }
 });
 module.exports = exports['default'];
